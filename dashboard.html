@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Shadow Games Dashboard</title>
+  <style>
+    @import url('https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css');
+
+    body {
+      margin: 0;
+      font-family: 'Segoe UI', sans-serif;
+      background-color: #141414;
+      color: #808080;
+      display: flex;
+      height: 100vh;
+    }
+
+    .sidebar {
+      width: 250px;
+      background-color: #1f1f1f;
+      padding: 20px;
+      box-shadow: 2px 0 5px rgba(0, 0, 0, 0.2);
+    }
+
+    .sidebar h1 {
+      color: #808080;
+      font-size: 24px;
+      margin-bottom: 40px;
+    }
+
+    .sidebar a {
+      display: block;
+      color: #454545;
+      text-decoration: none;
+      margin: 15px 0;
+      font-weight: bold;
+      cursor: pointer;
+      transition: color 0.3s, transform 0.2s;
+    }
+
+    .sidebar a:hover {
+      color: #808080;
+      transform: translateX(5px);
+    }
+
+    .main {
+      flex: 1;
+      padding: 40px;
+    }
+
+    .main h2 {
+      color: #808080;
+      margin-top: 0;
+    }
+
+    .card {
+      background-color: #1f1f1f;
+      padding: 20px;
+      border-radius: 10px;
+      margin-top: 20px;
+      box-shadow: 0 0 10px rgba(0,0,0,0.4);
+      transition: transform 0.3s ease;
+    }
+
+    .card:hover {
+      transform: scale(1.02);
+    }
+
+    .social-links a {
+      display: inline-flex;
+      align-items: center;
+      margin-right: 20px;
+      color: #454545;
+      text-decoration: none;
+      font-weight: bold;
+      margin-bottom: 10px;
+      transition: color 0.3s;
+    }
+
+    .social-links a i {
+      margin-right: 8px;
+      font-size: 18px;
+    }
+
+    .social-links a:hover {
+      color: #808080;
+    }
+
+    .hidden {
+      display: none;
+    }
+
+    .game-button {
+      padding: 10px 20px;
+      background-color: #454545;
+      border: none;
+      border-radius: 5px;
+      color: #808080;
+      font-weight: bold;
+      cursor: pointer;
+      transition: background-color 0.3s, transform 0.2s;
+    }
+
+    .game-button:hover {
+      background-color: #808080;
+      color: #141414;
+      transform: scale(1.05);
+    }
+  </style>
+</head>
+<body>
+  <audio id="clickSound" src="cloudy_smooth_click.mp3" preload="auto"></audio>
+  <audio id="hoverSound" src="hover_sound.mp3" preload="auto"></audio>
+
+  <div class="sidebar">
+    <h1>Shadow Games</h1>
+    <a onclick="navigate('dashboard')" onmouseover="playHover()">Dashboard</a>
+    <a onclick="navigate('games')" onmouseover="playHover()">Our Games</a>
+    <a onclick="navigate('news')" onmouseover="playHover()">News</a>
+    <a onclick="navigate('team')" onmouseover="playHover()">Team</a>
+    <a onclick="navigate('contact')" onmouseover="playHover()">Contact</a>
+  </div>
+  <div class="main">
+    <div id="dashboard">
+      <h2>Welcome to the Dashboard</h2>
+      <div class="card">
+        <p>This is where you’ll see your latest news, updates, or upcoming features for your team and games.</p>
+      </div>
+    </div>
+
+    <div id="games" class="hidden">
+      <h2>Our Games</h2>
+      <div class="card">
+        <p>Check out our latest game:</p>
+        <button class="game-button" onclick="navigate('lethalshadow'); playClick();" onmouseover="playHover()">Lethal Shadow</button>
+      </div>
+    </div>
+
+    <div id="lethalshadow" class="hidden">
+      <h2>Lethal Shadow</h2>
+      <div class="card">
+        <h3>Monster: The Mimic</h3>
+        <p><strong>Description:</strong> Copies the Player every time someone gets killed. If another Player goes near the Mimic, it will return to its original form.</p>
+      </div>
+    </div>
+
+    <div id="news" class="hidden">
+      <h2>News</h2>
+      <div class="card">
+        <p>Coming soon...</p>
+      </div>
+    </div>
+
+    <div id="team" class="hidden">
+      <h2>Team</h2>
+      <div class="card">
+        <p>Meet our amazing developers and creative team behind Shadow Games.</p>
+      </div>
+    </div>
+
+    <div id="contact" class="hidden">
+      <h2>Contact</h2>
+      <div class="card">
+        <p>Reach out to us through our social media links below.</p>
+      </div>
+    </div>
+
+    <div class="card">
+      <h3>Social</h3>
+      <div class="social-links">
+        <a href="https://discord.gg/Ar9CntBm92" target="_blank" onmouseover="playHover()">
+          <i class="fab fa-discord"></i> Discord
+        </a>
+        <a href="https://www.youtube.com/@ShadowGames-official-A" target="_blank" onmouseover="playHover()">
+          <i class="fab fa-youtube"></i> YouTube
+        </a>
+        <a href="https://www.tiktok.com/@0fficial_shadow_games" target="_blank" onmouseover="playHover()">
+          <i class="fab fa-tiktok"></i> TikTok
+        </a>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    const clickSound = document.getElementById("clickSound");
+    const hoverSound = document.getElementById("hoverSound");
+
+    function playClick() {
+      clickSound.currentTime = 0;
+      clickSound.play();
+
+    function playHover() {
+    }
+      hoverSound.currentTime = 0;
+      hoverSound.play();
+    }
+
+    function navigate(pageId) {
+      playClick();
+      const pages = ['dashboard', 'games', 'news', 'team', 'contact', 'lethalshadow'];
+      pages.forEach(id => document.getElementById(id).classList.add('hidden'));
+      document.getElementById(pageId).classList.remove('hidden');
+    }
+  </script>
+</body>
+</html>
