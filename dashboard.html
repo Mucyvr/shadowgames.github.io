@@ -47,6 +47,7 @@
     .main {
       flex: 1;
       padding: 40px;
+      overflow-y: auto;
     }
 
     .main h2 {
@@ -107,6 +108,20 @@
       color: #141414;
       transform: scale(1.05);
     }
+
+    .team-member {
+      margin-bottom: 20px;
+    }
+
+    .team-member h3 {
+      margin: 0;
+      color: #808080;
+    }
+
+    .team-member p {
+      margin: 5px 0 0;
+      color: #606060;
+    }
   </style>
 </head>
 <body>
@@ -154,8 +169,25 @@
 
     <div id="team" class="hidden">
       <h2>Team</h2>
-      <div class="card">
-        <p>Meet our amazing developers and creative team behind Shadow Games.</p>
+      <div class="card team-member">
+        <h3>EchoPath</h3>
+        <p>Main Owner and Developer</p>
+      </div>
+      <div class="card team-member">
+        <h3>Mucy</h3>
+        <p>Owner, Developer, and Creator of the game, website, and App Lab</p>
+      </div>
+      <div class="card team-member">
+        <h3>FIREXGARDS</h3>
+        <p>2nd Owner and Model Creator</p>
+      </div>
+      <div class="card team-member">
+        <h3>Kryllos</h3>
+        <p>Music and Sound Effect Producer (best of the best)</p>
+      </div>
+      <div class="card team-member">
+        <h3>Budgtag</h3>
+        <p>Music and Sound Effect Producer</p>
       </div>
     </div>
 
@@ -189,9 +221,9 @@
     function playClick() {
       clickSound.currentTime = 0;
       clickSound.play();
+    }
 
     function playHover() {
-    }
       hoverSound.currentTime = 0;
       hoverSound.play();
     }
